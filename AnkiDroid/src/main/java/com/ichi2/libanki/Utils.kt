@@ -529,18 +529,6 @@ object Utils {
     }
 
     /**
-     * @param left An object of type T
-     * @param right An object of type T
-     * @param <T> A type on which equals can be called
-     * @return Whether both objects are equal.
-     </T> */
-    // Similar as Objects.equals. So deprecated starting at API Level 19 where this methods exists.
-    @KotlinCleanup("remove")
-    fun <T> equals(left: T?, right: T?): Boolean {
-        return left === right || left != null && left == right
-    }
-
-    /**
      * @param fields A map from field name to field value
      * @return The set of non empty field values.
      */
