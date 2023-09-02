@@ -84,16 +84,12 @@ class NotetypeJson : JSONObject {
      * @param sfld Fields of a note of this note type
      * @return The set of name of non-empty fields.
      */
-    @KotlinCleanup("filter")
     fun nonEmptyFields(sfld: Array<String>): Set<String> {
-        val fieldNames = fieldsNames
-        val nonemptyFields: MutableSet<String> = HashUtil.HashSetInit(sfld.size)
-        for (i in sfld.indices) {
-            if (sfld[i].trim { it <= ' ' }.isNotEmpty()) {
-                nonemptyFields.add(fieldNames[i])
-            }
-        }
-        return nonemptyFields
+        return fieldsNames
+            .zip(sfld)
+            .toMap()
+            .filterValues { value -> value.trim { it <= ' ' }.isNotEmpty() }
+            .keys
     }
 
     /** Python method
